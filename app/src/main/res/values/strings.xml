@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">دیکشنری تخصصی واژه</string>
+    <string name="hello_blank_fragment">سلام خوش اومدین</string>
+    <string name="strvocabs">کلمات</string>
+    <string name="strFavs">نشان شده ها</string>
+    <string name="strAbout">درباره</string>
+    <string name="strNoVocabFound">هیچ لغتی در پایگاه داده پیدا نشد!</string>
+    <string name="strmajorText">رشته</string>
+    <string name="strSearchText">جستجوی کلمه</string>
+    <string name="app_name_persian">دیکشنری تخصصی واژه</string>
+    <string name="splash_text">واژه یاب 38 رشته تخصصی</string>
+    <string name="title_vocab">واژه ها</string>
+    <string name="title_about">درباره</string>
+    <string name="title_rate">ثبت نظر</string>
+</resources>

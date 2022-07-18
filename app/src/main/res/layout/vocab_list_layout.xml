@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    card_view:cardBackgroundColor="#fff"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="3dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/lay_back"
+        android:background="@color/cardview_light_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvenglish"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:background="?attr/selectableItemBackground"
+                android:textStyle="bold"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:padding="5dp"
+                android:fontFamily="@font/iroodak"
+                android:text="English"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvpersian"
+                android:textColor="@color/black"
+                android:background="?attr/selectableItemBackground"
+                android:textSize="16sp"
+                android:text="فارسی"
+                android:fontFamily="@font/iroodak"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="end"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/btn_spell"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/ic_baseline_volume_up_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+
+                android:layout_weight="0"/>
+            <ImageView
+                android:padding="8dp"
+                android:id="@+id/btn_copy"
+                android:src="@drawable/ic_baseline_content_copy_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
