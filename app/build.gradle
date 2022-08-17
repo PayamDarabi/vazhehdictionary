@@ -10,8 +10,8 @@ android {
         applicationId "com.mr47.vazhehdictionary"
         minSdk 28
         targetSdk 28
-        versionCode 20
-        versionName "1.4.0.1"
+        versionCode 21
+        versionName "1.4.0.2"
 
     }
     signingConfigs {
