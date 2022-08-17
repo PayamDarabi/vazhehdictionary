@@ -9,7 +9,7 @@
     <string name="strSearchText">جستجوی کلمه</string>
     <string name="app_name_persian">دیکشنری تخصصی واژه</string>
     <string name="splash_text">واژه یاب 38 رشته تخصصی</string>
-    <string name="title_vocab">واژه ها</string>
+    <string name="title_vocab">واژه نامه</string>
     <string name="title_about">درباره</string>
     <string name="title_rate">ثبت نظر</string>
 </resources>
