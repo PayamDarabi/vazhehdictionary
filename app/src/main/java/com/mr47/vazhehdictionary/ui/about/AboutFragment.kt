@@ -1,10 +1,14 @@
 package com.mr47.vazhehdictionary.ui.about
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.mr47.vazhehdictionary.R
@@ -39,7 +43,7 @@ class AboutFragment : Fragment() {
                 "\n" +
                 "<p><span style=\"font-family:Times New Roman,Times,serif\">عزیزانی که قصد همراهی برای توسعه و اضافه کردن امکانات بیشتر به این واژه نامه را دارند از طریق گیت هاب پروژه میتوانند تغییراتشان را اعمال کنند و برای ادغام کردن با این پروژه ارسال کنند.</span></p>\n" +
                 "\n" +
-                "<p><a href=\"https://github.com/PayamDarabi/VazhehDictionary\">آدرس گیت هاب پروژه</a></p>\n" +
+                "<p><a href=\"https://github.com/PayamDarabi/vazhehdictionary\">آدرس گیت هاب پروژه</a></p>\n" +
                 "\n" +
                 "<br/><p>با تشکر از عوامل همراه در ساخت این اپلیکیشن</p>\n" +
                 "\n" +
@@ -62,6 +66,14 @@ class AboutFragment : Fragment() {
 
         tvOutput.setMovementMethod(LinkMovementMethod.getInstance());
         tvOutput.text = spanned
+
+        val btnRate=root.findViewById<Button>(R.id.btnRate)
+        btnRate.setOnClickListener(View.OnClickListener {
+            val intent = Intent(Intent.ACTION_EDIT)
+            intent.data = Uri.parse("bazaar://details?id=com.mr47.vazhehdictionary")
+            intent.setPackage("com.farsitel.bazaar")
+            startActivity(intent)
+        })
         return root
     }
 

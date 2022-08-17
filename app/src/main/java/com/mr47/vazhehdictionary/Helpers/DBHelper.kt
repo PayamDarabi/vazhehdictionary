@@ -89,17 +89,7 @@ class DBHelper(val context: Context){
         return database.rawQuery("SELECT * FROM " + TABLE_VOCABS, null)
 
     }
-    fun getFavedVocabs(): Cursor? {
-
-        // here we are creating a readable
-        // variable of our database
-        // as we want to read value from it
-
-        // below code returns a cursor to
-        // read data from the database
-        return database.rawQuery("SELECT * FROM " + TABLE_VOCABS, null)
-
-    }
+   
     fun getMajors(): Cursor? {
 
         // here we are creating a readable

@@ -35,4 +35,16 @@
         android:justificationMode="inter_word"
         android:fontFamily="@font/iroodak"
         app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <Button
+        android:id="@+id/btnRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_rate"
+        android:fontFamily="@font/iroodak"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/text_about"
+        app:layout_constraintStart_toStartOf="@id/text_about"
+        app:layout_constraintTop_toBottomOf="@id/text_about"
+        ></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

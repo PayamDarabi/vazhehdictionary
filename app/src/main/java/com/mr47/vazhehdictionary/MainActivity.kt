@@ -53,37 +53,13 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         forceRTLIfSupported()
     }
-    private fun showDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_dialog)
-        val yesBtn = dialog.findViewById(R.id.btn_yes) as Button
-        val noBtn = dialog.findViewById(R.id.btn_no) as Button
-        yesBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_EDIT)
-            intent.data = Uri.parse("bazaar://details?id=com.mr47.vazhehdictionary")
-            intent.setPackage("com.farsitel.bazaar")
-            startActivity(intent)
-            val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-            val editor = preferences.edit()
-            editor.putBoolean("Rated", true).apply();
-            editor.apply()
-        }
-        noBtn.setOnClickListener { dialog.dismiss() }
-        dialog.show()
 
-    }
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
         }
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val rated =  preferences.getBoolean("Rated", false)
-        if(rated.not()) {
-            showDialog()
-        }
+
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, "برای خروج مجددا بازگشت را بفشارید...", Toast.LENGTH_SHORT).show()
     }

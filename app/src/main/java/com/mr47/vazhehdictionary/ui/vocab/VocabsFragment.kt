@@ -22,7 +22,7 @@ import com.mr47.vazhehdictionary.R
 import com.mr47.vazhehdictionary.databinding.FragmentVocabBinding
 
 class VocabsFragment : Fragment() {
-    var majors : MutableList<Major> = ArrayList()
+    var majors: MutableList<Major> = ArrayList()
     lateinit var db: DBHelper
     var selectedMajorId = 0;
     private var _binding: FragmentVocabBinding? = null
@@ -34,18 +34,20 @@ class VocabsFragment : Fragment() {
         majors = this?.let { context?.let { it1 -> getMajors() } }!!
 
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         _binding = FragmentVocabBinding.inflate(inflater, container, false)
+        _binding = FragmentVocabBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val rootView = root.findViewById<ConstraintLayout>(R.id.vocabsArea)
         val edtSearch: AppCompatEditText = rootView!!.findViewById(R.id.edtSearchBox)
         edtSearch.hint = resources.getString(R.string.strSearchText)
-        val type = this?.let { context?.let { it1 -> ResourcesCompat.getFont(it1, R.font.iroodak) } }
-        edtSearch.typeface=type
+        val type =
+            this?.let { context?.let { it1 -> ResourcesCompat.getFont(it1, R.font.iroodak) } }
+        edtSearch.typeface = type
         val vocabs = this?.let { context?.let { _ -> getVocabs(majors[0].Id) } }
 
         val vocabsView: RecyclerView = rootView.findViewById(R.id.vocabsList)
@@ -70,7 +72,7 @@ class VocabsFragment : Fragment() {
                     val major: Major = parent.selectedItem as Major
                     val vocabs = context?.let { getVocabs(major.Id) }
                     selectedMajorId = major.Id
-                    if (vocabs?.size !!> 0) {
+                    if (vocabs?.size!! > 0) {
                         vocabsView.visibility = View.VISIBLE
                         val mAdapter = this?.let { VocabsAdapter(vocabs) }
                         vocabsView.adapter = mAdapter
@@ -86,7 +88,7 @@ class VocabsFragment : Fragment() {
 
         vocabsView.layoutManager = linearLayoutManager
         vocabsView.setHasFixedSize(true)
-        if (vocabs?.size !!> 0) {
+        if (vocabs?.size!! > 0) {
             vocabsView.visibility = View.VISIBLE
             val mAdapter = this?.let { VocabsAdapter(vocabs) }
             vocabsView.adapter = mAdapter
@@ -106,12 +108,21 @@ class VocabsFragment : Fragment() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-                if(s.length>3){
-                    val vocabs= doSearch(s, vocabs as ArrayList<Vocab>?)
+                if (s.isEmpty()) {
+                    val vocabs = context?.let { getVocabs(selectedMajorId) }
+                    vocabsView.layoutManager = linearLayoutManager
+                    vocabsView.setHasFixedSize(true)
+                    if (vocabs?.size!! > 0) {
+                        vocabsView.visibility = View.VISIBLE
+                        val mAdapter = this?.let { VocabsAdapter(vocabs as ArrayList<Vocab>) }
+                        vocabsView.adapter = mAdapter
+                    }
+                } else {
+                    val vocabs = doSearch(s, vocabs as ArrayList<Vocab>?)
 
                     vocabsView.layoutManager = linearLayoutManager
                     vocabsView.setHasFixedSize(true)
-                    if (vocabs?.size !!> 0) {
+                    if (vocabs?.size!! > 0) {
                         vocabsView.visibility = View.VISIBLE
                         val mAdapter = this?.let { VocabsAdapter(vocabs as ArrayList<Vocab>) }
                         vocabsView.adapter = mAdapter
@@ -119,16 +130,7 @@ class VocabsFragment : Fragment() {
                         vocabsView.visibility = View.GONE
                     }
                 }
-                else if(s.length==0){
-                    val vocabs= context?.let { getVocabs(selectedMajorId) }
-                    vocabsView.layoutManager = linearLayoutManager
-                    vocabsView.setHasFixedSize(true)
-                    if (vocabs?.size !!> 0) {
-                        vocabsView.visibility = View.VISIBLE
-                        val mAdapter = this?.let { VocabsAdapter(vocabs as ArrayList<Vocab>) }
-                        vocabsView.adapter = mAdapter
-                    }
-                }
+
             }
 
         })
@@ -164,12 +166,15 @@ class VocabsFragment : Fragment() {
 
     fun doSearch(searchedVocab: CharSequence, words: ArrayList<Vocab>?): List<Vocab> {
         if (words != null) {
-            Log.d("RESULTS LIST",words.count().toString())
+            Log.d("RESULTS LIST", words.count().toString())
         }
         val searched: List<Vocab> = words!!.filter { s ->
-            s.English.contains(searchedVocab) || s.Persian.contains(searchedVocab)
+            s.English.contains(
+                searchedVocab,
+                ignoreCase = true
+            ) || s.Persian.contains(searchedVocab, ignoreCase = true)
         }
-        Log.d("RESULTS LIST",searched.count().toString())
+        Log.d("RESULTS LIST", searched.count().toString())
         return searched
     }
 
